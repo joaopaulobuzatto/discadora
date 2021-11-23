@@ -1,0 +1,54 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="fatura">
+      <h2 data-cy="faturaDetailsHeading"><span>Fatura</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ fatura.id }}</span>
+        </dd>
+        <dt><span>Numero Fatura</span></dt>
+        <dd>
+          <span>{{ fatura.numeroFatura }}</span>
+        </dd>
+        <dt><span>Data Vencimento</span></dt>
+        <dd>
+          <span>{{ fatura.dataVencimento | formatMediumDate }}</span>
+        </dd>
+        <dt><span>Valor Faturado</span></dt>
+        <dd>
+          <span>{{ fatura.valorFaturado }}</span>
+        </dd>
+        <dt><span>Valor Aberto</span></dt>
+        <dd>
+          <span>{{ fatura.valorAberto }}</span>
+        </dd>
+        <dt><span>Status</span></dt>
+        <dd>
+          <span>{{ fatura.status }}</span>
+        </dd>
+        <dt><span>Cliente</span></dt>
+        <dd>
+          <div *ngIf="fatura.cliente">
+            <a [routerLink]="['/cliente', fatura.cliente?.id, 'view']">{{ fatura.cliente?.cnpj }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/fatura', fatura.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,64 @@
+{
+  "name": "ResponsavelCliente",
+  "fields": [
+    {
+      "fieldName": "cpf",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nome",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dataNascimento",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "rg",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "telefone1",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "telefone2",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nomeMae",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nomePai",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "funcao",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "cliente",
+      "otherEntityRelationshipName": "responsavelCliente",
+      "relationshipName": "cliente",
+      "otherEntityField": "cnpj"
+    }
+  ],
+  "entityTableName": "responsavel_cliente",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211123125241"
+}

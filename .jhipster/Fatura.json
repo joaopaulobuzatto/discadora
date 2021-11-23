@@ -1,0 +1,44 @@
+{
+  "name": "Fatura",
+  "fields": [
+    {
+      "fieldName": "numeroFatura",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dataVencimento",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "valorFaturado",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "valorAberto",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "cliente",
+      "otherEntityRelationshipName": "fatura",
+      "relationshipName": "cliente",
+      "otherEntityField": "cnpj"
+    }
+  ],
+  "entityTableName": "fatura",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211123125239"
+}

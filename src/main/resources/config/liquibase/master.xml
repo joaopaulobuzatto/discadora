@@ -15,7 +15,16 @@
     <property name="datetimeType" value="datetime" dbms="oracle, mssql, postgresql, h2"/>
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20211123125237_added_entity_Filial.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20211123125238_added_entity_Cliente.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20211123125239_added_entity_Fatura.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20211123125240_added_entity_LinhaMovel.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20211123125241_added_entity_ResponsavelCliente.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20211123125238_added_entity_constraints_Cliente.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20211123125239_added_entity_constraints_Fatura.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20211123125240_added_entity_constraints_LinhaMovel.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20211123125241_added_entity_constraints_ResponsavelCliente.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
 </databaseChangeLog>
