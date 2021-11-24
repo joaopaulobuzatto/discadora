@@ -1,0 +1,128 @@
+<div>
+  <h2 id="page-heading" data-cy="ResponsavelClienteHeading">
+    <span>Responsavel Clientes</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span>Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-responsavel-cliente"
+        [routerLink]="['/responsavel-cliente/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span> Create a new Responsavel Cliente </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="responsavelClientes?.length === 0">
+    <span>No responsavelClientes found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="responsavelClientes && responsavelClientes.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span>ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="cpf"><span>Cpf</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="nome"><span>Nome</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="dataNascimento"><span>Data Nascimento</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="rg"><span>Rg</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="telefone1"><span>Telefone 1</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="telefone2"><span>Telefone 2</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="email"><span>Email</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="nomeMae"><span>Nome Mae</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="nomePai"><span>Nome Pai</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="funcao"><span>Funcao</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="createdBy"><span>Created By</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="createdDate"><span>Created Date</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="lastModifiedBy"><span>Last Modified By</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="lastModifiedDate"><span>Last Modified Date</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="cliente.cnpj"><span>Cliente</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let responsavelCliente of responsavelClientes; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/responsavel-cliente', responsavelCliente.id, 'view']">{{ responsavelCliente.id }}</a>
+          </td>
+          <td>{{ responsavelCliente.cpf }}</td>
+          <td>{{ responsavelCliente.nome }}</td>
+          <td>{{ responsavelCliente.dataNascimento | formatMediumDate }}</td>
+          <td>{{ responsavelCliente.rg }}</td>
+          <td>{{ responsavelCliente.telefone1 }}</td>
+          <td>{{ responsavelCliente.telefone2 }}</td>
+          <td>{{ responsavelCliente.email }}</td>
+          <td>{{ responsavelCliente.nomeMae }}</td>
+          <td>{{ responsavelCliente.nomePai }}</td>
+          <td>{{ responsavelCliente.funcao }}</td>
+          <td>{{ responsavelCliente.createdBy }}</td>
+          <td>{{ responsavelCliente.createdDate | formatMediumDatetime }}</td>
+          <td>{{ responsavelCliente.lastModifiedBy }}</td>
+          <td>{{ responsavelCliente.lastModifiedDate | formatMediumDatetime }}</td>
+          <td>
+            <div *ngIf="responsavelCliente.cliente">
+              <a [routerLink]="['/cliente', responsavelCliente.cliente?.id, 'view']">{{ responsavelCliente.cliente?.cnpj }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/responsavel-cliente', responsavelCliente.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/responsavel-cliente', responsavelCliente.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(responsavelCliente)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="responsavelClientes && responsavelClientes.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

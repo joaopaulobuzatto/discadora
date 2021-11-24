@@ -1,0 +1,178 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="cliente">
+      <h2 data-cy="clienteDetailsHeading"><span>Cliente</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ cliente.id }}</span>
+        </dd>
+        <dt><span>Cnpj</span></dt>
+        <dd>
+          <span>{{ cliente.cnpj }}</span>
+        </dd>
+        <dt><span>Razao Social</span></dt>
+        <dd>
+          <span>{{ cliente.razaoSocial }}</span>
+        </dd>
+        <dt><span>Nome Fantasia</span></dt>
+        <dd>
+          <span>{{ cliente.nomeFantasia }}</span>
+        </dd>
+        <dt><span>Telefone 1</span></dt>
+        <dd>
+          <span>{{ cliente.telefone1 }}</span>
+        </dd>
+        <dt><span>Telefone 2</span></dt>
+        <dd>
+          <span>{{ cliente.telefone2 }}</span>
+        </dd>
+        <dt><span>Telefone 3</span></dt>
+        <dd>
+          <span>{{ cliente.telefone3 }}</span>
+        </dd>
+        <dt><span>Telefone 4</span></dt>
+        <dd>
+          <span>{{ cliente.telefone4 }}</span>
+        </dd>
+        <dt><span>Telefone 5</span></dt>
+        <dd>
+          <span>{{ cliente.telefone5 }}</span>
+        </dd>
+        <dt><span>Telefone 6</span></dt>
+        <dd>
+          <span>{{ cliente.telefone6 }}</span>
+        </dd>
+        <dt><span>Telefone 7</span></dt>
+        <dd>
+          <span>{{ cliente.telefone7 }}</span>
+        </dd>
+        <dt><span>Telefone 8</span></dt>
+        <dd>
+          <span>{{ cliente.telefone8 }}</span>
+        </dd>
+        <dt><span>Email 1</span></dt>
+        <dd>
+          <span>{{ cliente.email1 }}</span>
+        </dd>
+        <dt><span>Email 2</span></dt>
+        <dd>
+          <span>{{ cliente.email2 }}</span>
+        </dd>
+        <dt><span>Email 3</span></dt>
+        <dd>
+          <span>{{ cliente.email3 }}</span>
+        </dd>
+        <dt><span>Email 4</span></dt>
+        <dd>
+          <span>{{ cliente.email4 }}</span>
+        </dd>
+        <dt><span>Email 5</span></dt>
+        <dd>
+          <span>{{ cliente.email5 }}</span>
+        </dd>
+        <dt><span>Email 6</span></dt>
+        <dd>
+          <span>{{ cliente.email6 }}</span>
+        </dd>
+        <dt><span>Quantidade Funcionarios</span></dt>
+        <dd>
+          <span>{{ cliente.quantidadeFuncionarios }}</span>
+        </dd>
+        <dt><span>Quantidade Linhas Movel</span></dt>
+        <dd>
+          <span>{{ cliente.quantidadeLinhasMovel }}</span>
+        </dd>
+        <dt><span>Quantidade Linhas Fixa</span></dt>
+        <dd>
+          <span>{{ cliente.quantidadeLinhasFixa }}</span>
+        </dd>
+        <dt><span>Nome Contato Principal</span></dt>
+        <dd>
+          <span>{{ cliente.nomeContatoPrincipal }}</span>
+        </dd>
+        <dt><span>Telefone 1 Contato Principal</span></dt>
+        <dd>
+          <span>{{ cliente.telefone1ContatoPrincipal }}</span>
+        </dd>
+        <dt><span>Telefone 2 Contato Principal</span></dt>
+        <dd>
+          <span>{{ cliente.telefone2ContatoPrincipal }}</span>
+        </dd>
+        <dt><span>Email Contato Principal</span></dt>
+        <dd>
+          <span>{{ cliente.emailContatoPrincipal }}</span>
+        </dd>
+        <dt><span>Observacao</span></dt>
+        <dd>
+          <span>{{ cliente.observacao }}</span>
+        </dd>
+        <dt><span>Cep</span></dt>
+        <dd>
+          <span>{{ cliente.cep }}</span>
+        </dd>
+        <dt><span>Logradouro</span></dt>
+        <dd>
+          <span>{{ cliente.logradouro }}</span>
+        </dd>
+        <dt><span>Bairro</span></dt>
+        <dd>
+          <span>{{ cliente.bairro }}</span>
+        </dd>
+        <dt><span>Numero</span></dt>
+        <dd>
+          <span>{{ cliente.numero }}</span>
+        </dd>
+        <dt><span>Cidade</span></dt>
+        <dd>
+          <span>{{ cliente.cidade }}</span>
+        </dd>
+        <dt><span>Uf</span></dt>
+        <dd>
+          <span>{{ cliente.uf }}</span>
+        </dd>
+        <dt><span>Created By</span></dt>
+        <dd>
+          <span>{{ cliente.createdBy }}</span>
+        </dd>
+        <dt><span>Created Date</span></dt>
+        <dd>
+          <span>{{ cliente.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span>Last Modified By</span></dt>
+        <dd>
+          <span>{{ cliente.lastModifiedBy }}</span>
+        </dd>
+        <dt><span>Last Modified Date</span></dt>
+        <dd>
+          <span>{{ cliente.lastModifiedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span>Consultor</span></dt>
+        <dd>
+          <span>{{ cliente.consultor?.login }}</span>
+        </dd>
+        <dt><span>Filial</span></dt>
+        <dd>
+          <div *ngIf="cliente.filial">
+            <a [routerLink]="['/filial', cliente.filial?.id, 'view']">{{ cliente.filial?.nomeFantasia }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/cliente', cliente.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>
