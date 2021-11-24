@@ -1,0 +1,54 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="linhaMovel">
+      <h2 data-cy="linhaMovelDetailsHeading"><span>Linha Movel</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ linhaMovel.id }}</span>
+        </dd>
+        <dt><span>Numero Linha</span></dt>
+        <dd>
+          <span>{{ linhaMovel.numeroLinha }}</span>
+        </dd>
+        <dt><span>Status</span></dt>
+        <dd>
+          <span>{{ linhaMovel.status }}</span>
+        </dd>
+        <dt><span>Data Ativacao</span></dt>
+        <dd>
+          <span>{{ linhaMovel.dataAtivacao | formatMediumDate }}</span>
+        </dd>
+        <dt><span>Plano</span></dt>
+        <dd>
+          <span>{{ linhaMovel.plano }}</span>
+        </dd>
+        <dt><span>Operadora</span></dt>
+        <dd>
+          <span>{{ linhaMovel.operadora }}</span>
+        </dd>
+        <dt><span>Cliente</span></dt>
+        <dd>
+          <div *ngIf="linhaMovel.cliente">
+            <a [routerLink]="['/cliente', linhaMovel.cliente?.id, 'view']">{{ linhaMovel.cliente?.cnpj }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/linha-movel', linhaMovel.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

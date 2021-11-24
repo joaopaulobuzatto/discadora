@@ -1,0 +1,109 @@
+entity User {
+	isAdmin Boolean,
+	isConsultor Boolean
+}
+
+entity Filial {
+	cnpj String,
+    razaoSocial String,
+    nomeFantasia String,
+    createdBy String,
+    createdDate Instant,
+    lastModifiedBy String,
+    lastModifiedDate Instant
+}
+
+entity Cliente {
+	cnpj String,
+    razaoSocial String,
+    nomeFantasia String,
+    telefone1 String,
+    telefone2 String,
+    telefone3 String,
+    telefone4 String,
+    telefone5 String,
+    telefone6 String,
+    telefone7 String,
+    telefone8 String,
+    email1 String,
+    email2 String,
+    email3 String,
+    email4 String,
+    email5 String,
+    email6 String,
+    quantidadeFuncionarios Integer,
+    quantidadeLinhasMovel Integer,
+    quantidadeLinhasFixa Integer,
+    nomeContatoPrincipal String,
+    telefone1ContatoPrincipal String,
+    telefone2ContatoPrincipal String,
+    emailContatoPrincipal String,
+    observacao String,
+    cep String,
+    logradouro String,
+    bairro String,
+    numero String,
+    cidade String,
+    uf String,
+    createdBy String,
+    createdDate Instant,
+    lastModifiedBy String,
+    lastModifiedDate Instant
+}
+
+entity Fatura {
+	numeroFatura String,
+    dataVencimento LocalDate,
+    valorFaturado BigDecimal,
+    valorAberto BigDecimal,
+    status String
+    createdBy String,
+    createdDate Instant,
+    lastModifiedBy String,
+    lastModifiedDate Instant
+}
+
+entity LinhaMovel {
+	numeroLinha String,
+    status String,
+    dataAtivacao LocalDate,
+    plano String,
+    operadora String
+}
+
+entity ResponsavelCliente {
+	cpf String,
+    nome String,
+    dataNascimento LocalDate,
+    rg String,
+    telefone1 String,
+    telefone2 String,
+    email String,
+    nomeMae String,
+    nomePai String,
+    funcao String
+    createdBy String,
+    createdDate Instant,
+    lastModifiedBy String,
+    lastModifiedDate Instant
+}
+
+relationship ManyToOne {
+    Cliente{consultor(login)} to User
+    Cliente{filial(nomeFantasia)} to Filial
+    Fatura{cliente(cnpj)} to Cliente
+    LinhaMovel{cliente(cnpj)} to Cliente
+    ResponsavelCliente{cliente(cnpj)} to Cliente
+}
+
+// Set pagination options
+paginate all with pagination
+
+// Use Data Transfer Objects (DTO)
+dto all with mapstruct
+
+// Set service options to all except few
+service all with serviceClass
+
+// Set an angular suffix
+// angularSuffix * with mySuffix
