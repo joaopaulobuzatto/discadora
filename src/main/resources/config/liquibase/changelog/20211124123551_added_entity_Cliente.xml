@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity Cliente.
+    -->
+    <changeSet id="20211124123551-1" author="jhipster">
+        <createTable tableName="cliente">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="cnpj" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="razao_social" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="nome_fantasia" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="telefone_1" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="telefone_2" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="telefone_3" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="telefone_4" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="telefone_5" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="telefone_6" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="telefone_7" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="telefone_8" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="email_1" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="email_2" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="email_3" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="email_4" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="email_5" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="email_6" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="quantidade_funcionarios" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="quantidade_linhas_movel" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="quantidade_linhas_fixa" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="nome_contato_principal" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="telefone_1_contato_principal" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="telefone_2_contato_principal" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="email_contato_principal" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="observacao" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="cep" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="logradouro" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="bairro" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="numero" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="cidade" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="uf" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="created_by" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="created_date" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="last_modified_by" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="last_modified_date" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="consultor_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="filial_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+        <dropDefaultValue tableName="cliente" columnName="created_date" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="cliente" columnName="last_modified_date" columnDataType="${datetimeType}"/>
+    </changeSet>
+
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
+
+    <!--
+        Load sample data generated with Faker.js
+        - This data can be easily edited using a CSV editor (or even MS Excel) and
+          is located in the 'src/main/resources/config/liquibase/fake-data' directory
+        - By default this data is applied when running with the JHipster 'dev' profile.
+          This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
+          Spring Boot configuration key.
+    -->
+    <changeSet id="20211124123551-1-data" author="jhipster" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/cliente.csv"
+                  separator=";"
+                  tableName="cliente"
+                  usePreparedStatements="true">
+            <column name="id" type="numeric"/>
+            <column name="cnpj" type="string"/>
+            <column name="razao_social" type="string"/>
+            <column name="nome_fantasia" type="string"/>
+            <column name="telefone_1" type="string"/>
+            <column name="telefone_2" type="string"/>
+            <column name="telefone_3" type="string"/>
+            <column name="telefone_4" type="string"/>
+            <column name="telefone_5" type="string"/>
+            <column name="telefone_6" type="string"/>
+            <column name="telefone_7" type="string"/>
+            <column name="telefone_8" type="string"/>
+            <column name="email_1" type="string"/>
+            <column name="email_2" type="string"/>
+            <column name="email_3" type="string"/>
+            <column name="email_4" type="string"/>
+            <column name="email_5" type="string"/>
+            <column name="email_6" type="string"/>
+            <column name="quantidade_funcionarios" type="numeric"/>
+            <column name="quantidade_linhas_movel" type="numeric"/>
+            <column name="quantidade_linhas_fixa" type="numeric"/>
+            <column name="nome_contato_principal" type="string"/>
+            <column name="telefone_1_contato_principal" type="string"/>
+            <column name="telefone_2_contato_principal" type="string"/>
+            <column name="email_contato_principal" type="string"/>
+            <column name="observacao" type="string"/>
+            <column name="cep" type="string"/>
+            <column name="logradouro" type="string"/>
+            <column name="bairro" type="string"/>
+            <column name="numero" type="string"/>
+            <column name="cidade" type="string"/>
+            <column name="uf" type="string"/>
+            <column name="created_by" type="string"/>
+            <column name="created_date" type="date"/>
+            <column name="last_modified_by" type="string"/>
+            <column name="last_modified_date" type="date"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

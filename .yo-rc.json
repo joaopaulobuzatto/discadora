@@ -42,7 +42,9 @@
     "clientTheme": "none",
     "clientThemeVariant": "",
     "reactive": false,
-    "enableGradleEnterprise": false
+    "enableGradleEnterprise": false,
+    "entities": ["Filial", "Cliente", "Fatura", "LinhaMovel", "ResponsavelCliente"],
+    "lastLiquibaseTimestamp": 1637757354000
   },
   "git-provider": "GitHub",
   "git-company": "joaopaulobuzatto",
