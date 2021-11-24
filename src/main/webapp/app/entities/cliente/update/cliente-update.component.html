@@ -1,0 +1,350 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-cliente-heading" data-cy="ClienteCreateUpdateHeading">Create or edit a Cliente</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_cnpj">Cnpj</label>
+          <input type="text" class="form-control" name="cnpj" id="field_cnpj" data-cy="cnpj" formControlName="cnpj" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_razaoSocial">Razao Social</label>
+          <input
+            type="text"
+            class="form-control"
+            name="razaoSocial"
+            id="field_razaoSocial"
+            data-cy="razaoSocial"
+            formControlName="razaoSocial"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_nomeFantasia">Nome Fantasia</label>
+          <input
+            type="text"
+            class="form-control"
+            name="nomeFantasia"
+            id="field_nomeFantasia"
+            data-cy="nomeFantasia"
+            formControlName="nomeFantasia"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_telefone1">Telefone 1</label>
+          <input type="text" class="form-control" name="telefone1" id="field_telefone1" data-cy="telefone1" formControlName="telefone1" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_telefone2">Telefone 2</label>
+          <input type="text" class="form-control" name="telefone2" id="field_telefone2" data-cy="telefone2" formControlName="telefone2" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_telefone3">Telefone 3</label>
+          <input type="text" class="form-control" name="telefone3" id="field_telefone3" data-cy="telefone3" formControlName="telefone3" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_telefone4">Telefone 4</label>
+          <input type="text" class="form-control" name="telefone4" id="field_telefone4" data-cy="telefone4" formControlName="telefone4" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_telefone5">Telefone 5</label>
+          <input type="text" class="form-control" name="telefone5" id="field_telefone5" data-cy="telefone5" formControlName="telefone5" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_telefone6">Telefone 6</label>
+          <input type="text" class="form-control" name="telefone6" id="field_telefone6" data-cy="telefone6" formControlName="telefone6" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_telefone7">Telefone 7</label>
+          <input type="text" class="form-control" name="telefone7" id="field_telefone7" data-cy="telefone7" formControlName="telefone7" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_telefone8">Telefone 8</label>
+          <input type="text" class="form-control" name="telefone8" id="field_telefone8" data-cy="telefone8" formControlName="telefone8" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_email1">Email 1</label>
+          <input type="text" class="form-control" name="email1" id="field_email1" data-cy="email1" formControlName="email1" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_email2">Email 2</label>
+          <input type="text" class="form-control" name="email2" id="field_email2" data-cy="email2" formControlName="email2" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_email3">Email 3</label>
+          <input type="text" class="form-control" name="email3" id="field_email3" data-cy="email3" formControlName="email3" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_email4">Email 4</label>
+          <input type="text" class="form-control" name="email4" id="field_email4" data-cy="email4" formControlName="email4" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_email5">Email 5</label>
+          <input type="text" class="form-control" name="email5" id="field_email5" data-cy="email5" formControlName="email5" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_email6">Email 6</label>
+          <input type="text" class="form-control" name="email6" id="field_email6" data-cy="email6" formControlName="email6" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_quantidadeFuncionarios">Quantidade Funcionarios</label>
+          <input
+            type="number"
+            class="form-control"
+            name="quantidadeFuncionarios"
+            id="field_quantidadeFuncionarios"
+            data-cy="quantidadeFuncionarios"
+            formControlName="quantidadeFuncionarios"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_quantidadeLinhasMovel">Quantidade Linhas Movel</label>
+          <input
+            type="number"
+            class="form-control"
+            name="quantidadeLinhasMovel"
+            id="field_quantidadeLinhasMovel"
+            data-cy="quantidadeLinhasMovel"
+            formControlName="quantidadeLinhasMovel"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_quantidadeLinhasFixa">Quantidade Linhas Fixa</label>
+          <input
+            type="number"
+            class="form-control"
+            name="quantidadeLinhasFixa"
+            id="field_quantidadeLinhasFixa"
+            data-cy="quantidadeLinhasFixa"
+            formControlName="quantidadeLinhasFixa"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_nomeContatoPrincipal">Nome Contato Principal</label>
+          <input
+            type="text"
+            class="form-control"
+            name="nomeContatoPrincipal"
+            id="field_nomeContatoPrincipal"
+            data-cy="nomeContatoPrincipal"
+            formControlName="nomeContatoPrincipal"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_telefone1ContatoPrincipal">Telefone 1 Contato Principal</label>
+          <input
+            type="text"
+            class="form-control"
+            name="telefone1ContatoPrincipal"
+            id="field_telefone1ContatoPrincipal"
+            data-cy="telefone1ContatoPrincipal"
+            formControlName="telefone1ContatoPrincipal"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_telefone2ContatoPrincipal">Telefone 2 Contato Principal</label>
+          <input
+            type="text"
+            class="form-control"
+            name="telefone2ContatoPrincipal"
+            id="field_telefone2ContatoPrincipal"
+            data-cy="telefone2ContatoPrincipal"
+            formControlName="telefone2ContatoPrincipal"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_emailContatoPrincipal">Email Contato Principal</label>
+          <input
+            type="text"
+            class="form-control"
+            name="emailContatoPrincipal"
+            id="field_emailContatoPrincipal"
+            data-cy="emailContatoPrincipal"
+            formControlName="emailContatoPrincipal"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_observacao">Observacao</label>
+          <input
+            type="text"
+            class="form-control"
+            name="observacao"
+            id="field_observacao"
+            data-cy="observacao"
+            formControlName="observacao"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_cep">Cep</label>
+          <input type="text" class="form-control" name="cep" id="field_cep" data-cy="cep" formControlName="cep" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_logradouro">Logradouro</label>
+          <input
+            type="text"
+            class="form-control"
+            name="logradouro"
+            id="field_logradouro"
+            data-cy="logradouro"
+            formControlName="logradouro"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_bairro">Bairro</label>
+          <input type="text" class="form-control" name="bairro" id="field_bairro" data-cy="bairro" formControlName="bairro" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_numero">Numero</label>
+          <input type="text" class="form-control" name="numero" id="field_numero" data-cy="numero" formControlName="numero" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_cidade">Cidade</label>
+          <input type="text" class="form-control" name="cidade" id="field_cidade" data-cy="cidade" formControlName="cidade" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_uf">Uf</label>
+          <input type="text" class="form-control" name="uf" id="field_uf" data-cy="uf" formControlName="uf" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_createdBy">Created By</label>
+          <input type="text" class="form-control" name="createdBy" id="field_createdBy" data-cy="createdBy" formControlName="createdBy" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_createdDate">Created Date</label>
+          <div class="d-flex">
+            <input
+              id="field_createdDate"
+              data-cy="createdDate"
+              type="datetime-local"
+              class="form-control"
+              name="createdDate"
+              formControlName="createdDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_lastModifiedBy">Last Modified By</label>
+          <input
+            type="text"
+            class="form-control"
+            name="lastModifiedBy"
+            id="field_lastModifiedBy"
+            data-cy="lastModifiedBy"
+            formControlName="lastModifiedBy"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_lastModifiedDate">Last Modified Date</label>
+          <div class="d-flex">
+            <input
+              id="field_lastModifiedDate"
+              data-cy="lastModifiedDate"
+              type="datetime-local"
+              class="form-control"
+              name="lastModifiedDate"
+              formControlName="lastModifiedDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_consultor">Consultor</label>
+          <select class="form-control" id="field_consultor" data-cy="consultor" name="consultor" formControlName="consultor">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="userOption.id === editForm.get('consultor')!.value?.id ? editForm.get('consultor')!.value : userOption"
+              *ngFor="let userOption of usersSharedCollection; trackBy: trackUserById"
+            >
+              {{ userOption.login }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_supervisor">Supervisor</label>
+          <select class="form-control" id="field_supervisor" data-cy="supervisor" name="supervisor" formControlName="supervisor">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="userOption.id === editForm.get('supervisor')!.value?.id ? editForm.get('supervisor')!.value : userOption"
+              *ngFor="let userOption of usersSharedCollection; trackBy: trackUserById"
+            >
+              {{ userOption.login }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_filial">Filial</label>
+          <select class="form-control" id="field_filial" data-cy="filial" name="filial" formControlName="filial">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="filialOption.id === editForm.get('filial')!.value?.id ? editForm.get('filial')!.value : filialOption"
+              *ngFor="let filialOption of filialsSharedCollection; trackBy: trackFilialById"
+            >
+              {{ filialOption.nomeFantasia }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

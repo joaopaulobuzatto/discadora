@@ -1,0 +1,90 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="responsavelCliente">
+      <h2 data-cy="responsavelClienteDetailsHeading"><span>Responsavel Cliente</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ responsavelCliente.id }}</span>
+        </dd>
+        <dt><span>Cpf</span></dt>
+        <dd>
+          <span>{{ responsavelCliente.cpf }}</span>
+        </dd>
+        <dt><span>Nome</span></dt>
+        <dd>
+          <span>{{ responsavelCliente.nome }}</span>
+        </dd>
+        <dt><span>Data Nascimento</span></dt>
+        <dd>
+          <span>{{ responsavelCliente.dataNascimento | formatMediumDate }}</span>
+        </dd>
+        <dt><span>Rg</span></dt>
+        <dd>
+          <span>{{ responsavelCliente.rg }}</span>
+        </dd>
+        <dt><span>Telefone 1</span></dt>
+        <dd>
+          <span>{{ responsavelCliente.telefone1 }}</span>
+        </dd>
+        <dt><span>Telefone 2</span></dt>
+        <dd>
+          <span>{{ responsavelCliente.telefone2 }}</span>
+        </dd>
+        <dt><span>Email</span></dt>
+        <dd>
+          <span>{{ responsavelCliente.email }}</span>
+        </dd>
+        <dt><span>Nome Mae</span></dt>
+        <dd>
+          <span>{{ responsavelCliente.nomeMae }}</span>
+        </dd>
+        <dt><span>Nome Pai</span></dt>
+        <dd>
+          <span>{{ responsavelCliente.nomePai }}</span>
+        </dd>
+        <dt><span>Funcao</span></dt>
+        <dd>
+          <span>{{ responsavelCliente.funcao }}</span>
+        </dd>
+        <dt><span>Created By</span></dt>
+        <dd>
+          <span>{{ responsavelCliente.createdBy }}</span>
+        </dd>
+        <dt><span>Created Date</span></dt>
+        <dd>
+          <span>{{ responsavelCliente.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span>Last Modified By</span></dt>
+        <dd>
+          <span>{{ responsavelCliente.lastModifiedBy }}</span>
+        </dd>
+        <dt><span>Last Modified Date</span></dt>
+        <dd>
+          <span>{{ responsavelCliente.lastModifiedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span>Cliente</span></dt>
+        <dd>
+          <div *ngIf="responsavelCliente.cliente">
+            <a [routerLink]="['/cliente', responsavelCliente.cliente?.id, 'view']">{{ responsavelCliente.cliente?.cnpj }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/responsavel-cliente', responsavelCliente.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

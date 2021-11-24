@@ -48,6 +48,11 @@ public class CacheConfiguration {
             createCache(cm, com.telvendas.discadora.domain.User.class.getName());
             createCache(cm, com.telvendas.discadora.domain.Authority.class.getName());
             createCache(cm, com.telvendas.discadora.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.telvendas.discadora.domain.Filial.class.getName());
+            createCache(cm, com.telvendas.discadora.domain.Cliente.class.getName());
+            createCache(cm, com.telvendas.discadora.domain.Fatura.class.getName());
+            createCache(cm, com.telvendas.discadora.domain.LinhaMovel.class.getName());
+            createCache(cm, com.telvendas.discadora.domain.ResponsavelCliente.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

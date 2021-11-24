@@ -1,0 +1,182 @@
+<div>
+  <h2 id="page-heading" data-cy="ClienteHeading">
+    <span>Clientes</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span>Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-cliente"
+        [routerLink]="['/cliente/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span> Create a new Cliente </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="clientes?.length === 0">
+    <span>No clientes found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="clientes && clientes.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span>ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="cnpj"><span>Cnpj</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="razaoSocial"><span>Razao Social</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="nomeFantasia"><span>Nome Fantasia</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="telefone1"><span>Telefone 1</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="telefone2"><span>Telefone 2</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="telefone3"><span>Telefone 3</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="telefone4"><span>Telefone 4</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="telefone5"><span>Telefone 5</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="telefone6"><span>Telefone 6</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="telefone7"><span>Telefone 7</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="telefone8"><span>Telefone 8</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="email1"><span>Email 1</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="email2"><span>Email 2</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="email3"><span>Email 3</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="email4"><span>Email 4</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="email5"><span>Email 5</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="email6"><span>Email 6</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="quantidadeFuncionarios"><span>Quantidade Funcionarios</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="quantidadeLinhasMovel"><span>Quantidade Linhas Movel</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="quantidadeLinhasFixa"><span>Quantidade Linhas Fixa</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="nomeContatoPrincipal"><span>Nome Contato Principal</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="telefone1ContatoPrincipal">
+            <span>Telefone 1 Contato Principal</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="telefone2ContatoPrincipal">
+            <span>Telefone 2 Contato Principal</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="emailContatoPrincipal"><span>Email Contato Principal</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="observacao"><span>Observacao</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="cep"><span>Cep</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="logradouro"><span>Logradouro</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="bairro"><span>Bairro</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="numero"><span>Numero</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="cidade"><span>Cidade</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="uf"><span>Uf</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="createdBy"><span>Created By</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="createdDate"><span>Created Date</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="lastModifiedBy"><span>Last Modified By</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="lastModifiedDate"><span>Last Modified Date</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="consultor.login"><span>Consultor</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="supervisor.login"><span>Supervisor</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="filial.nomeFantasia"><span>Filial</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cliente of clientes; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/cliente', cliente.id, 'view']">{{ cliente.id }}</a>
+          </td>
+          <td>{{ cliente.cnpj }}</td>
+          <td>{{ cliente.razaoSocial }}</td>
+          <td>{{ cliente.nomeFantasia }}</td>
+          <td>{{ cliente.telefone1 }}</td>
+          <td>{{ cliente.telefone2 }}</td>
+          <td>{{ cliente.telefone3 }}</td>
+          <td>{{ cliente.telefone4 }}</td>
+          <td>{{ cliente.telefone5 }}</td>
+          <td>{{ cliente.telefone6 }}</td>
+          <td>{{ cliente.telefone7 }}</td>
+          <td>{{ cliente.telefone8 }}</td>
+          <td>{{ cliente.email1 }}</td>
+          <td>{{ cliente.email2 }}</td>
+          <td>{{ cliente.email3 }}</td>
+          <td>{{ cliente.email4 }}</td>
+          <td>{{ cliente.email5 }}</td>
+          <td>{{ cliente.email6 }}</td>
+          <td>{{ cliente.quantidadeFuncionarios }}</td>
+          <td>{{ cliente.quantidadeLinhasMovel }}</td>
+          <td>{{ cliente.quantidadeLinhasFixa }}</td>
+          <td>{{ cliente.nomeContatoPrincipal }}</td>
+          <td>{{ cliente.telefone1ContatoPrincipal }}</td>
+          <td>{{ cliente.telefone2ContatoPrincipal }}</td>
+          <td>{{ cliente.emailContatoPrincipal }}</td>
+          <td>{{ cliente.observacao }}</td>
+          <td>{{ cliente.cep }}</td>
+          <td>{{ cliente.logradouro }}</td>
+          <td>{{ cliente.bairro }}</td>
+          <td>{{ cliente.numero }}</td>
+          <td>{{ cliente.cidade }}</td>
+          <td>{{ cliente.uf }}</td>
+          <td>{{ cliente.createdBy }}</td>
+          <td>{{ cliente.createdDate | formatMediumDatetime }}</td>
+          <td>{{ cliente.lastModifiedBy }}</td>
+          <td>{{ cliente.lastModifiedDate | formatMediumDatetime }}</td>
+          <td>
+            {{ cliente.consultor?.login }}
+          </td>
+          <td>
+            {{ cliente.supervisor?.login }}
+          </td>
+          <td>
+            <div *ngIf="cliente.filial">
+              <a [routerLink]="['/filial', cliente.filial?.id, 'view']">{{ cliente.filial?.nomeFantasia }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/cliente', cliente.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/cliente', cliente.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(cliente)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="clientes && clientes.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

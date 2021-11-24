@@ -1,0 +1,44 @@
+{
+  "name": "LinhaMovel",
+  "fields": [
+    {
+      "fieldName": "numeroLinha",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dataAtivacao",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "plano",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "operadora",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "cliente",
+      "otherEntityRelationshipName": "linhaMovel",
+      "relationshipName": "cliente",
+      "otherEntityField": "cnpj"
+    }
+  ],
+  "entityTableName": "linha_movel",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211124120326"
+}

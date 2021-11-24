@@ -1,0 +1,93 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-linha-movel-heading" data-cy="LinhaMovelCreateUpdateHeading">Create or edit a Linha Movel</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_numeroLinha">Numero Linha</label>
+          <input
+            type="text"
+            class="form-control"
+            name="numeroLinha"
+            id="field_numeroLinha"
+            data-cy="numeroLinha"
+            formControlName="numeroLinha"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_status">Status</label>
+          <input type="text" class="form-control" name="status" id="field_status" data-cy="status" formControlName="status" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_dataAtivacao">Data Ativacao</label>
+          <div class="input-group">
+            <input
+              id="field_dataAtivacao"
+              data-cy="dataAtivacao"
+              type="text"
+              class="form-control"
+              name="dataAtivacao"
+              ngbDatepicker
+              #dataAtivacaoDp="ngbDatepicker"
+              formControlName="dataAtivacao"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="dataAtivacaoDp.toggle()">
+                <fa-icon icon="calendar-alt"></fa-icon>
+              </button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_plano">Plano</label>
+          <input type="text" class="form-control" name="plano" id="field_plano" data-cy="plano" formControlName="plano" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_operadora">Operadora</label>
+          <input type="text" class="form-control" name="operadora" id="field_operadora" data-cy="operadora" formControlName="operadora" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_cliente">Cliente</label>
+          <select class="form-control" id="field_cliente" data-cy="cliente" name="cliente" formControlName="cliente">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="clienteOption.id === editForm.get('cliente')!.value?.id ? editForm.get('cliente')!.value : clienteOption"
+              *ngFor="let clienteOption of clientesSharedCollection; trackBy: trackClienteById"
+            >
+              {{ clienteOption.cnpj }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
